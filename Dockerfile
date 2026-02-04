@@ -14,11 +14,10 @@ RUN apt-get update -qq && \
     python3 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Node.js 20 (LTS sufficient for Chatwoot/Rails usually) or match local 24
-# Using a setup script for Node
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+# Install Node.js 24 and pnpm 10 to match package.json engines
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - && \
     apt-get install -y nodejs && \
-    npm install -g pnpm@9.x
+    npm install -g pnpm@10.x
 
 # Set working directory
 WORKDIR /app
